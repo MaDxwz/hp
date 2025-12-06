@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Gift</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(#ffdde6, #ffc9d8, #ffdcea);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+    color: #5b0038;
+}
+
+/* VIDEO */
+.video-container {
+    position: relative;
+    width: 70%;
+    margin: 50px auto;
+}
+video {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #ffbad2;
+}
+
+/* SIDE PICS */
+.side-pics {
+    position: absolute;
+    top: 10%;
+    width: 80px;
+}
+.side-pics.left {
+    left: -100px;
+}
+.side-pics.right {
+    right: -100px;
+}
+.side-pics img {
+    display: block;
+    margin: 20px 0;
+    width: 80px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #ffbad2;
+}
+
+/* BIG IMAGE BELOW BUTTON */
+.main-image {
+    width: 80%;
+    max-width: 600px;
+    margin: 250px auto 40px auto;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
+}
+
+/* NOTE BUTTON */
+.note-button {
+    background: linear-gradient(135deg, #ff6b9d, #ffa8c5);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 25px rgba(255, 107, 157, 0.4);
+    transition: all 0.3s ease;
+    margin: 80px auto 30px auto;
+    display: block;
+}
+.note-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.6);
+}
+
+/* NOTE OVERLAY */
+.note-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+.note-overlay.active {
+    display: flex;
+}
+
+/* REALISTIC PAPER NOTE */
+.note-card {
+    background: #f9f7f1;
+    padding: 60px 50px;
+    border-radius: 2px;
+    max-width: 550px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 
+        0 1px 3px rgba(0,0,0,0.12),
+        0 8px 25px rgba(0,0,0,0.15),
+        inset 0 0 100px rgba(139,111,71,0.02);
+    position: relative;
+    animation: unfold 0.6s ease;
+    transform-origin: top;
+    border: 1px solid #d4cdb8;
+}
+
+/* Paper texture with noise */
+.note-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: 2px;
+    opacity: 0.5;
+}
+
+/* Red margin line on left like notebook paper */
+.note-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 182, 193, 0.3);
+    pointer-events: none;
+}
+
+@keyframes unfold {
+    0% {
+        transform: perspective(1000px) rotateX(-90deg);
+        opacity: 0;
+    }
+    50% {
+        transform: perspective(1000px) rotateX(-45deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: perspective(1000px) rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #d4a574;
+    color: #fffef9;
+    border: none;
+    font-size: 24px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #c49563;
+    transform: rotate(90deg);
+}
+
+.note-card h2 {
+    color: #2c2416;
+    margin-bottom: 25px;
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    font-weight: normal;
+    font-size: 32px;
+    text-shadow: none;
+}
+
+.note-card p {
+    color: #1a1612;
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 20px;
+    font-family: 'Segoe Script', 'Bradley Hand', cursive;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+.note-images {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.note-images img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 
+        0 2px 5px rgba(0,0,0,0.2),
+        0 0 0 3px #fffef9,
+        0 0 0 4px #d4a574;
+    transform: rotate(-2deg);
+    transition: all 0.3s ease;
+}
+
+.note-images img:nth-child(2) {
+    transform: rotate(3deg);
+}
+
+.note-images img:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 10;
+}
+
+.note-link {
+    display: inline-block;
+    background: #d4a574;
+    color: #fffef9;
+    padding: 12px 35px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    font-family: 'Georgia', serif;
+    box-shadow: 0 3px 10px rgba(212, 165, 116, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.note-link:hover {
+    background: #c49563;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 165, 116, 0.5);
+}
+</style>
+</head>
+<body>
+
+<button id="openNote" class="note-button">Open Your Note 💌</button>
+
+<img src="1764709577712.jpg" alt="Main Image" class="main-image">
+<p style="text-align:center; margin-top:20px; font-size:22px; color:#5b0038;">
+some of our moments gaming , i keep forgetting to take clips and screenshots silly me :p<br>
+
+</p>
+<div id="noteOverlay" class="note-overlay">
+    <div class="note-card">
+        <button class="close-btn" onclick="closeNote()">×</button>
+       <h2>A Special Message For You</h2>
+<p style="text-align:center;">
+Happy 20th birthday, Livuss — officially an unc now hehehehe , hope your day is as amazing as you are.<br><br>
+I wanted to give you something that feels a little like us simple and cute , teasing you is fun but making you smile? Even better 💕<br><br>
+I always have the best time playing with you, and your laugh? Honestly, it’s kinda dangerous how it genuinely makes me smile every single time hahahaha . <br><br>
+I was planning to get you a game or something you really want. So here you go: click below, pick any game you like and send me the link. Just a small gift (or anything u want i inssist ) lovss :)
+</p>
+
+        <div class="note-images">
+            <img src="LittleNightmaresIII_2025_10_08_03_32_15_866.webp" alt="Memory 1">
+            <img src="1764709577716.png" alt="Memory 2">
+        </div>
+        <a href="https://www.instant-gaming.com/en/" target="_blank" class="note-link">Click here for more ✨</a>
+    </div>
+</div>
+
+<div class="video-container">
+    <video src="A Way Out - Epic Bike Moment(720P_HD).mp4" autoplay muted loop></video>
+    <div class="side-pics left">
+        <img src="pic1.webp" alt="">
+        <img src="pic2.webp" alt="">
+    </div>
+    <div class="side-pics right">
+        <img src="pic3.webp" alt="">
+        <img src="pic4.webp" alt="">
+    </div>
+</div>
+<div class="video-container">
+    <img src="LittleNightmaresIII_2025_10_08_03_32_15_866.webp" autoplay muted loop></img>
+    <div class="side-pics left">
+        <img src="sideA1.webp" alt="">
+        <img src="sideA2.webp" alt="">
+    </div>
+    <div class="side-pics right">
+        <img src="sideB1.webp" alt="">
+        <img src="sideB2.webp" alt="">
+    </div>
+</div>
+<script>
+const openBtn = document.getElementById('openNote');
+const noteOverlay = document.getElementById('noteOverlay');
+
+openBtn.addEventListener('click', () => {
+    noteOverlay.classList.add('active');
+});
+
+function closeNote() {
+    noteOverlay.classList.remove('active');
+}
+
+// Close when clicking outside the note card
+noteOverlay.addEventListener('click', (e) => {
+    if (e.target === noteOverlay) {
+        closeNote();
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(#ffdde6, #ffc9d8, #ffdcea);
+    font-family: 'Segoe UI', sans-serif;
+    color: #5b0038;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* SIDE PILLARS */
+.side-pillar {
+    position: fixed;
+    top: 0;
+    width: 150px;
+    height: 100vh;
+    background-repeat: repeat-y;
+    background-size: contain;
+    z-index: -1;
+    pointer-events: none;
+}
+.left { left: 0; background-image: url("9985851e1d9b2a7dfd24f9e0a56c261f.webp"); }
+.right { right: 0; background-image: url("9985851e1d9b2a7dfd24f9e0a56c261f.webp"); transform: scaleX(-1); }
+
+/* TOP + BOTTOM PILLARS */
+.top-pillar, .bottom-pillar {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 150px;
+    background-image: url("images.jpeg");
+    background-repeat: repeat-x;
+    background-size: contain;
+    z-index: -1;
+    pointer-events: none;
+}
+.top-pillar { top: 0; }
+.bottom-pillar { bottom: 0; transform: scaleY(-1); }
+
+/* HAPPY BIRTHDAY TEXT WITH GIFS */
+h1 {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 65px;
+    font-weight: 900;
+    color: #8b004e;
+    text-shadow: 0 0 10px #ffb7d5;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+h1 img { width: 70px; height: 70px; }
+
+/* TEXT BELOW */
+p {
+    font-size: 24px;
+    margin-top: 200px;
+    margin-bottom: 70px;
+    color: #6d003d;
+    line-height: 1.4;
+}
+
+/* BUTTONS */
+.btn {
+    padding: 18px 60px;
+    font-size: 22px;
+    border: none;
+    background: #ff7bab;
+    color: white;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 0 15px #ffbad2;
+}
+.btn:hover { background: #ff98c1; transform: scale(1.07); box-shadow: 0 0 22px #ffbad2; }
+
+.music-btn {
+    margin-top: 60px;
+    font-size: 20px;
+    background: #fff0f7;
+    padding: 14px 25px;
+    border-radius: 12px;
+    border: 2px solid #ff9acb;
+    cursor: pointer;
+    color: #8b004e;
+    transition: 0.2s;
+    box-shadow: 0 0 10px #ffd9e8;
+}
+.music-btn:hover { background: #ffe0ee; transform: scale(1.05); }
+
+/* PETALS */
+.petal {
+    position: fixed;
+    top: -10vh;
+    width: 18px;
+    height: 22px;
+    background: #ff9acb;
+    border-radius: 70% 30% 70% 30%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+@keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
+
+/* SIDE IMAGES */
+.side-image {
+    position: fixed;
+    top: 50%;
+    z-index: 5;
+    pointer-events: none;
+}
+.side-image.left-img { left: 15px; transform: translateY(-50%) scaleX(1); width: 200px; }
+.side-image.right-img { right: 15px; transform: translateY(-50%) scaleX(1); width: 200px; }
+
+/* CHERRY PARTICLES */
+.cherry-particle {
+    position: fixed;
+    width: 12px;
+    height: 14px;
+    background: #ffb7d5;
+    border-radius: 70% 30% 70% 30%;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+/* BEES */
+.bee { position: fixed; width: 80px; z-index: 10; transition: transform 0.5s linear; }
+</style>
+</head>
+<body>
+
+<!-- PILLARS -->
+<div class="side-pillar left"></div>
+<div class="side-pillar right"></div>
+<div class="top-pillar"></div>
+<div class="bottom-pillar"></div>
+
+<!-- HAPPY BIRTHDAY TEXT WITH GIFS -->
+<h1>
+    <img src="dancing-brown-freddy-fazbear-mydzkubxk5psaw8h.gif" alt="Freddy">
+    Happy Birthday
+    <img src="sonic-the-hedgehog-dancing.webp" alt="Sonic">
+</h1>
+
+<!-- SIDE IMAGES -->
+<img class="side-image left-img" src="HBD to me 🎂.jpeg" alt="Cake">
+<img class="side-image right-img" src="hj é meu aniversárioooooo.jpeg" alt="Cake">
+
+<p style="text-align:center;">
+happy birthday livuss, hope you have an amazing trip.<br>
+i know this isn’t much — i wanted to make you an edit and a small game<br>
+but i had like 8 days and exams were jump-scaring me, so yeah… sorry about that :<<br>
+a small gift is waiting for ya .
+</p>
+
+
+<button class="btn" onclick="window.location.href='gift.html'">Open Gift</button>
+<br>
+
+<audio id="music" src="The Lamp is Low (Guitar Part Looped)(MP3_128K).mp3" autoplay loop></audio>
+<button class="music-btn" onclick="toggleMusic()">♪ Play / Pause Music</button>
+
+<!-- CAKES -->
+<div style="margin-top:60px; display:flex; justify-content:center; gap:40px; align-items:flex-start;">
+    <div style="position:relative;"><img src="what-flavor-is-the-minecraft-cake-v0-x2mqztnzvyte1.webp" width="250"></div>
+    <div style="position:relative;">
+        <img src="Minecraft-Cake-Delicious-Blocky-Treat-PNG.webp" width="150" style="opacity:0.85;">
+        <p style="font-size:18px; margin-top:10px; color:#8b004e;">sorry… i was hungry and ate from this one :c</p>
+    </div>
+    <div style="position:relative;"><img src="what-flavor-is-the-minecraft-cake-v0-x2mqztnzvyte1.webp" width="250"></div>
+</div>
+
+<!-- BEES -->
+<img id="bee1" class="bee" src="Bee.webp" alt="Bee">
+<img id="bee2" class="bee" src="Bee.webp" alt="Bee">
+<img id="bee3" class="bee" src="Bee.webp" alt="Bee">
+
+<script>
+// Music toggle
+function toggleMusic() {
+    const music = document.getElementById("music");
+    if (music.paused) music.play(); else music.pause();
+}
+
+// Petals
+for (let i = 0; i < 45; i++) {
+    let p = document.createElement("div");
+    p.className = "petal";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (4 + Math.random() * 6) + "s";
+    p.style.opacity = 0.5 + Math.random() * 0.5;
+    document.body.appendChild(p);
+}
+
+// PNJ emitter
+const PNJ_URL = "kindpng_1093126.png";
+function createPNJEmitter() {
+    const pnj = document.createElement("img");
+    pnj.src = PNJ_URL;
+    pnj.style.position = "fixed";
+    pnj.style.bottom = "0px";
+    pnj.style.width = "20px";
+    pnj.style.left = 20 + Math.random() * 60 + "vw";
+    pnj.style.zIndex = 8;
+    document.body.appendChild(pnj);
+
+    const duration = 2500;
+    const startTime = Date.now();
+    const startY = 0;
+    const targetY = 50 + Math.random() * 20;
+
+    function explode() {
+        const rect = pnj.getBoundingClientRect();
+        for (let i = 0; i < 25; i++) {
+            createCherryParticle(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        }
+    }
+
+    function animatePNJ() {
+        const elapsed = Date.now() - startTime;
+        const progress = elapsed / duration;
+
+        if (progress < 1) {
+            const currentY = startY + (targetY * progress);
+            pnj.style.bottom = currentY + "vh";
+            requestAnimationFrame(animatePNJ);
+        } else { explode(); pnj.remove(); }
+    }
+    animatePNJ();
+}
+
+function createCherryParticle(x, y) {
+    const particle = document.createElement("div");
+    particle.className = "cherry-particle";
+    particle.style.left = x + "px";
+    particle.style.top = y + "px";
+    document.body.appendChild(particle);
+
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = 1 + Math.random() * 2;
+    const vx = Math.cos(angle) * velocity;
+    const vy = Math.sin(angle) * velocity;
+    const gravity = 0.05;
+    const rotationSpeed = (Math.random() - 0.5) * 10;
+
+    let posX = x, posY = y, velX = vx, velY = vy;
+    let rotation = Math.random() * 360;
+    let opacity = 1;
+
+    function animate() {
+        velY += gravity;
+        posX += velX;
+        posY += velY;
+        rotation += rotationSpeed;
+        opacity -= 0.01;
+
+        particle.style.left = posX + "px";
+        particle.style.top = posY + "px";
+        particle.style.transform = `rotate(${rotation}deg)`;
+        particle.style.opacity = opacity;
+
+        if (opacity > 0 && posY < window.innerHeight) requestAnimationFrame(animate);
+        else particle.remove();
+    }
+    animate();
+}
+
+setInterval(createPNJEmitter, 1200);
+
+// Bees
+window.addEventListener('DOMContentLoaded', () => {
+    class Bee {
+        constructor(el) {
+            this.el = el;
+            this.posX = window.innerWidth / 2 + (Math.random() * 100 - 50);
+            this.posY = 20 + Math.random() * 30;
+            this.targetX = this.posX;
+            this.targetY = this.posY;
+            this.dirX = 1;
+            this.waveOffset = Math.random() * Math.PI * 2;
+        }
+        pickNewTarget() {
+            this.targetX = 50 + Math.random() * (window.innerWidth - 100);
+            this.targetY = 10 + Math.random() * 70;
+            this.dirX = this.targetX > this.posX ? 1 : -1;
+        }
+        update() {
+            let dx = this.targetX - this.posX;
+            let dy = this.targetY - this.posY;
+            if (Math.sqrt(dx*dx + dy*dy) < 1) this.pickNewTarget();
+            this.posX += dx * 0.01;
+            this.posY += dy * 0.01;
+            this.el.style.left = this.posX + "px";
+            this.el.style.top = (this.posY + Math.sin(Date.now()/300 + this.waveOffset) * 5) + "vh";
+            this.el.style.transform = `scaleX(${this.dirX})`;
+        }
+    }
+    const bees = [
+        new Bee(document.getElementById("bee1")),
+        new Bee(document.getElementById("bee2")),
+        new Bee(document.getElementById("bee3"))
+    ];
+    function animateBees() { bees.forEach(b => b.update()); requestAnimationFrame(animateBees); }
+    animateBees();
+});
+</script>
+</body>
+</html>
